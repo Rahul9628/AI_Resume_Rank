@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Rank</title>
+    <link rel="stylesheet" href="static/Upload.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI - Resume SCORER</h1>
+        
+        <form id="resumeForm" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="job_description">Job Description:</label>
+                <textarea name="job_description" rows="6" placeholder="Enter job description here..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="keywords">Enter Job Keywords (comma-separated):</label>
+                <input type="text" name="keywords" placeholder="e.g., Python, AI, Machine Learning" required>
+            </div>
+
+        
+            <label class="neon-button">
+                <input type="file" id="resumeInput" class="file-input" name="resumes" multiple onchange="showFileNames()">
+                CHOOSE FILES
+            </label>
+
+            <ul id="fileList" class="file-list"></ul> 
+
+            
+            <button type="submit" class="neon-button">SUBMIT</button>
+        </form>
+        
+        <div class="result">
+            <p>Upload your resumes and provide the job description to get the ranking results!</p>
+        </div>
+    </div>
+
+    <script>
+        function showFileNames() {
+            const fileInput = document.getElementById("resumeInput");
+            const fileListContainer = document.getElementById("fileList");
+
+            fileListContainer.innerHTML = ""; // Clear previous list
+
+            if (fileInput.files.length > 0) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    let listItem = document.createElement("li");
+                    listItem.textContent = fileInput.files[i].name;
+                    fileListContainer.appendChild(listItem);
+                }
+            } else {
+                fileListContainer.innerHTML = "<li>No files selected</li>";
+            }
+        }
+    </script>
+
+</body>
+</html>
