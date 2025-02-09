@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Rank Results</title>
+    <link rel="stylesheet" href="static/Result.css" >
+</head>
+<body>
+
+    <div class="container">
+        <h1>Resume Ranking Results</h1>
+        
+        {% if scores %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resume Index</th>
+                        <th>Score (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for score in scores %}
+                        <tr>
+                            <td>{{ score.resume_index }}</td>
+                            <td>{{ score.score }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results to display. Please try again later.</p>
+        {% endif %}
+
+        <a href="/" class="back-btn">Back to Upload</a>
+    </div>
+
+</body>
+</html>
