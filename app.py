@@ -11,6 +11,15 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def home():
+    print("Current directory:", os.getcwd())
+
+    # Check if 'templates' folder exists
+    print("Templates folder exists:", os.path.exists('templates'))
+
+    # List contents of 'templates' if it exists
+    if os.path.exists('templates'):
+        print("Contents of templates folder:", os.listdir('templates'))
+
     """
     Home page to display the form for uploading resumes and job description.
     """
